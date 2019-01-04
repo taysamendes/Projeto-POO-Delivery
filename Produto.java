@@ -6,7 +6,7 @@ public class Produto {
 	public double preco;
 	private ArrayList<Pedido> pedidos = new ArrayList<>();
 	
-	/*	GETTERS AND SETTERS  */
+	/*GETTERS AND SETTERS*/
 
 	public int getId() {
 		return id;

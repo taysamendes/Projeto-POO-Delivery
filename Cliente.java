@@ -7,7 +7,7 @@ public class Cliente {
 	public String endereco;
 	private ArrayList<Pedido> pedidos = new ArrayList<>();
 	
-	/*	GETTERS AND SETTERS  */
+	/*GETTERS AND SETTERS*/
 	
 	public String getTelefone() {
 		return telefone;
