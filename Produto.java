@@ -11,6 +11,14 @@ public class Produto {
 	public int getId() {
 		return id;
 	}
+	
+	public ArrayList<Pedido> getPedidos() {
+		return pedidos;
+	}
+	
+	public void setPedidos(ArrayList<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
 	public void setId(int id) {
 		this.id = id;
 	}

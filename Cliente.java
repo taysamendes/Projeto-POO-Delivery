@@ -12,6 +12,15 @@ public class Cliente {
 	public String getTelefone() {
 		return telefone;
 	}
+	
+	public ArrayList<Pedido> getPedidos() {
+		return pedidos;
+	}
+	
+	public void setPedidos(ArrayList<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+	
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
