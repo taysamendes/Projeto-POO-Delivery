@@ -6,7 +6,7 @@ public class Cliente {
 	public String nome;
 	public String email;
 	public String endereco;
-	Map<Integer, Pedido> pedidos = new HashMap<>();
+	private HashMap<Integer, Pedido> pedidos = new HashMap<>();
 	
 	
 	public String getNome() {

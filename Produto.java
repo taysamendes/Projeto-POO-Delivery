@@ -5,7 +5,7 @@ public class Produto {
 	public int id;
 	public String nome;
 	public double preco;
-	Map<Integer, Pedido> produtos = new HashMap<>();
+	private HashMap<Integer, Pedido> produtos = new HashMap<>();
 	
 	public String getNome() {
 		return nome;
