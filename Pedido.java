@@ -1,32 +1,80 @@
+package modelo;
 import java.time.LocalDateTime;
+/**********************************
+ * IFPB - Curso Superior de Tec. em Sist. para Internet
+ * Programa√ß√£o Orientada a Objetos
+ * Prof. Fausto Maranh√£o Ayres
+ **********************************/
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
+import fachada.Fachada;
+ 
+ 
 public class Pedido {
-	public int id;
-	public LocalDateTime data;
-	public double total;
-	public String entregador;
-	public boolean fechado;
-	public Cliente cliente;
-	Map<Integer, Produto> produtos = new HashMap<>();
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	
-}
+    private int id;
+    private LocalDateTime data = LocalDateTime.now();
+     
+    private ArrayList<Produto>produtos = new ArrayList<Produto>();
+ 
+     
+    public Pedido(int id) {
+        super();
+        this.id = id;
+    }
+    public void adicionar(Produto p){
+        produtos.add(p);
+    }
+    public void remover(Produto p){
+        produtos.remove(p);
+    }
+ 
+//    public Produto localizar(String nome){
+//        for(Produto p : produtos){
+//            if(p.getNome().equals(nome))
+//                return p;
+//        }
+//        return null;
+//    }
+     
+ 
+    public int getTotalProdutos(){
+        return produtos.size();
+    }
+ 
+//    public int getId() {
+//    	Fachada p;
+//    	if(p.abrirPedido(telefone))
+//        return id;//    public String toString() {
+//      String texto = "Pedido [id=" + id  ;
+//      texto += ", produtos:";
+//      if (produtos.isEmpty())
+//          texto += " vazia";
+//      else   
+//          for(Produto p: produtos) 
+//              texto += " " + p.getDescricao() ;
+//
+//      return texto;
+//  }
 
-//listarPedidos() retorna todos pedidos do restaurante
-//listar Pedidos(telefone_cliente) - retorna todos pedidos de um cliente
-//abrirPedido(telefone_cliente)ñ cria e retorna um novo pedido aberto para o cliente
-//adicionarProdutoPedido(telefone_cliente, id_produto) ñ adiciona um produto no pedido aberto
-//removerProdutoPedido(telefone_cliente,id_produto) ñ remove uma ocorrÍncia do produto no pedido aberto 
-//consultarPedido(telefone_cliente) ñ retorna o pedido aberto do cliente, caso exista, ou null, caso n„o exista
-//cancelarPedido(telefone do cliente)ñapaga o pedido aberto do cliente, do restaurante e dos produtos relacionados a este pedido
-//fecharPedido(telefone do cliente, nome_entregador) ñ fecha o pedido aberto do cliente
-//enviar Pedido(telefone do cliente, senha_email) ñ envia email com pdf anexo contendo os dados do pedido que acabou de ser fechado
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+     
+ 
+   // @Override
+//    public String toString() {
+//        String texto = "Pedido [id=" + id  ;
+//        texto += ", produtos:";
+//        if (produtos.isEmpty())
+//            texto += " vazia";
+//        else   
+//            for(Produto p: produtos) 
+//                texto += " " + p.getNome() ;
+// 
+//        return texto + "]";
+//    }
+// 
+ 
+}
