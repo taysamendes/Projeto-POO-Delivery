@@ -16,7 +16,10 @@ import repositorio.Restaurante;
  
 public class Fachada {
     private static Restaurante restaurante = new Restaurante();
+    private ArrayList<Produto> produtos = new ArrayList<Produto>();
+
     private static int idpedido=0;  //autoincremento
+    
  
  
     public static Produto cadastrarProduto(String nome, double preco) throws  Exception{
@@ -65,11 +68,23 @@ public class Fachada {
     public static ArrayList<Produto> listarProdutos() {
         return restaurante.getProdutos();
     }
- 
+    
+    public static ArrayList<Produto> listarProdutos(String nome){
+    	
+    		if(p.getDescricao().startsWith(nome)) {
+    			return restaurante.getProdutos();    			
+    		}
+    	
+    	return restaurante.getProdutos();
+    	} 
      
      
     public static ArrayList<Pedido> listarPedidos() {
         return restaurante.getPrateleiras();
+    }
+    
+    public static ArrayList<Cliente> listarCliente(){
+    	return restaurante.getClientes();
     }
  
     /*################################################## MINHAS FUNÇÕES	########################################################################################################*/

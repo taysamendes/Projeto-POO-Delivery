@@ -60,6 +60,10 @@ public class Restaurante {
 	public ArrayList<Pedido> getPrateleiras() {
 		return pedidos;
 	}
+	
+	public ArrayList<Cliente> getClientes(){
+		return clientes;
+	}
 
 	public int getTotalProdutos(){
 		return produtos.size();
