@@ -5,6 +5,7 @@ import fachada.Fachada;
 import modelo.Cliente;
 import modelo.Pedido;
 import modelo.Produto;
+import repositorio.Restaurante;
  
 public class Teste {
      
@@ -18,32 +19,39 @@ public class Teste {
          
         try {
             Cliente joao = Fachada.cadastrarCliente("98745-0643", "joao", "joao@gmail.com",
-                    "Rua dos Tronos, 3");
+                    "Rua dos Tronos");
             System.out.println("cadastrou cliente="+joao.getNome());
             Cliente maria = Fachada.cadastrarCliente("98820-0222", "maria", "maria@gmail.com",
                     "Rua da Justiça, 12");          
             System.out.println("cadastrou cliente="+maria.getNome());
-     
+            Cliente amanda = Fachada.cadastrarCliente("998413306", "Amanda", "amanda@gmail.com", "Rua da Água,176");
+            System.out.println("Cadastrou cliente= "+amanda.getNome());
             Produto pizza = Fachada.cadastrarProduto("Pizza", 30);
             System.out.println("cadastrou produto="+pizza.getDescricao());
             Produto sushi = Fachada.cadastrarProduto("Sushi", 40);
+            
+            Produto Salada = Fachada.cadastrarProduto("Salada", 40);
+            Produto Suco = Fachada.cadastrarProduto("Suco", 40);
+            Produto Salame = Fachada.cadastrarProduto("Salame", 40);
+
+            
             System.out.println("cadastrou produto="+sushi.getDescricao());
             Produto cocaCola = Fachada.cadastrarProduto("Coca-cola", 10);
             System.out.println("cadastrou produto="+cocaCola.getDescricao());
             Produto guarana = Fachada.cadastrarProduto("Guarana", 5);   
             System.out.println("cadastrou produto="+guarana.getDescricao());     
              
-//            System.out.println("\nAbrir pedidos");          
-//            Pedido pedido1 = Fachada.abrirPedido("98745-0643");
-//            System.out.println("abrir pedido ="+pedido1.getId());
-//            Pedido pedido2 = Fachada.abrirPedido("98820-0222");
-//            System.out.println("abrir pedido ="+pedido2.getId());
+            System.out.println("\nAbrir pedidos");          
+            Pedido pedido1 = Fachada.abrirPedido("98745-0643");
+            System.out.println("abrir pedido ="+pedido1.getId());
+            Pedido pedido2 = Fachada.abrirPedido("98820-0222");
+            System.out.println("abrir pedido ="+pedido2.getId());
 //             
 //            System.out.println("\nconsultar pedido ="+ Fachada.consultarPedido("98745-0643"));
 //            System.out.println("\nconsultar pedido ="+ Fachada.consultarPedido("98820-0222"));
 //             
-//            System.out.println("\n adicao dos produtos ao Pedido");         
-//            Fachada.adicionarProdutoPedido("98745-0643", 1);
+            System.out.println("\n adicao dos produtos ao Pedido");         
+            Fachada.adicionarProdutoPedido("98745-0643", "Coca");
 //            Fachada.adicionarProdutoPedido("98745-0643", 1);
 //            Fachada.adicionarProdutoPedido("98745-0643", 3);            
 //            Fachada.adicionarProdutoPedido("98820-0222", 2);    
@@ -85,15 +93,15 @@ public class Teste {
      
     public static void parte2 () {
          
-//        System.out.println("Clientes cadastrados: ");
-//        ArrayList<Cliente> clientes = Fachada.listarClientes();
-//        if (!clientes.isEmpty())
-//            System.out.println(clientes);
-//        else
-//            System.out.println("Nao existem clientes cadastrados.");
-         
+        System.out.println("Clientes cadastrados: ");
+        ArrayList<Cliente> clientes = Fachada.listarClientes();
+        if (!clientes.isEmpty())
+            System.out.println(clientes);
+        else
+            System.out.println("Nao existem clientes cadastrados.");
+//         
         System.out.println("Produtos cadastrados: ");       
-        ArrayList<Produto> produtos = Fachada.listarProdutos("Coca");
+        ArrayList<Produto> produtos = Fachada.listarProdutos("");
         if (!produtos.isEmpty())
             System.out.println(produtos);
         else
@@ -107,12 +115,12 @@ public class Teste {
 //        else
 //            System.out.println("Nao existe produto que contenha '" + filtro + "'em seu nome");
 // 
-//        System.out.println("Pedidos cadastrados: ");            
-//        ArrayList<Pedido> pedidos = Fachada.listarPedidos();
-//        if (!pedidos.isEmpty())
-//            System.out.println(pedidos);
-//        else
-//            System.out.println("Nao existem pedidos cadastrados.");
+        System.out.println("Pedidos cadastrados: ");            
+        ArrayList<Pedido> pedidos = Fachada.listarPedidos();
+        if (!pedidos.isEmpty())
+            System.out.println(pedidos);
+        else
+            System.out.println("Nao existem pedidos cadastrados.");
 // 
 // 
 //        System.out.println("Pedidos cadastrados de um cliente: ");          

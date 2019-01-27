@@ -70,29 +70,34 @@ public class Fachada {
     }
     
     public static ArrayList<Produto> listarProdutos(String nome){
+    	ArrayList<Produto> ProdutosNomes = new ArrayList<>();
+    	ArrayList<Produto> p = Fachada.listarProdutos();
     	
-    		if(p.getDescricao().startsWith(nome)) {
-    			return restaurante.getProdutos();    			
-    		}
+    	if(nome.isEmpty())
+    		return restaurante.getProdutos();
     	
-    	return restaurante.getProdutos();
-    	} 
-     
+    	for(Produto produtos: p) {
+    		if(produtos.getDescricao().startsWith(nome)) 
+    			ProdutosNomes.add(produtos);    		
+    	}
+		return ProdutosNomes;
+    } 
+    
      
     public static ArrayList<Pedido> listarPedidos() {
-        return restaurante.getPrateleiras();
+        return restaurante.getPedidos();
     }
     
-    public static ArrayList<Cliente> listarCliente(){
+    public static ArrayList<Cliente> listarClientes(){
     	return restaurante.getClientes();
     }
  
     /*################################################## MINHAS FUNÇÕES	########################################################################################################*/
-    public static Cliente cadastrarCliente(String telefone, String nome_cliente, String email, String endereco)throws Exception {
-    	Cliente c  = restaurante.localizarCliente(nome_cliente);
+    public static Cliente cadastrarCliente(String telefone, String nome, String email, String endereco)throws Exception {
+    	Cliente c  = restaurante.localizarCliente(nome);
     	if(c!=null)
-            throw new Exception("O cliente já cadastrado:" + nome_cliente);
-    	c = new Cliente(telefone,nome_cliente,email,endereco);
+            throw new Exception("O cliente já cadastrado:" + nome);
+    	c = new Cliente(telefone,nome,email,endereco);
     	restaurante.adicionar(c);
     	return c;
     }

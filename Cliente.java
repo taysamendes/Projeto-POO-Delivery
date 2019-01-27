@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class Cliente {
 	private String telefone;
-	private String nome_cliente;
+	private String nome;
 	private String email;
 	private String endereco;
 	
@@ -14,7 +14,7 @@ public class Cliente {
 	
 	public Cliente(String telefone, String nome,String email,String endereco) {
 		this.telefone = telefone;
-		this.nome_cliente = nome;
+		this.nome = nome;
 		this.email = email;
 		this.endereco = endereco;
 	}
@@ -31,12 +31,12 @@ public class Cliente {
 
 
 	public String getNome() {
-		return nome_cliente;
+		return nome;
 	}
 
 
 	public void setNome(String nome) {
-		this.nome_cliente = nome;
+		this.nome = nome;
 	}
 
 
@@ -48,13 +48,20 @@ public class Cliente {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Cliente [telefone=" + telefone + ", nome=" + nome + "]";
+	}
+	
 	
 	
 	 /*################################################## MINHAS FUNÇÕES	########################################################################################################*/
-	public Pedido obterPedidoAberto(String telefone) {
-		Cliente cli;
-		
-	}
+//	public Pedido obterPedidoAberto(String telefone) {
+//		Cliente cli;
+//		
+//	}
 
     /*##########################################################################################################################################################################*/
      

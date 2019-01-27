@@ -9,14 +9,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import fachada.Fachada;
+import repositorio.Restaurante;
  
  
 public class Pedido {
-    private int id;
+    private int id=0;
     private LocalDateTime data = LocalDateTime.now();
+
      
     private ArrayList<Produto>produtos = new ArrayList<Produto>();
- 
+
      
     public Pedido(int id) {
         super();
@@ -42,39 +44,29 @@ public class Pedido {
         return produtos.size();
     }
  
-//    public int getId() {
-//    	Fachada p;
-//    	if(p.abrirPedido(telefone))
-//        return id;//    public String toString() {
-//      String texto = "Pedido [id=" + id  ;
-//      texto += ", produtos:";
-//      if (produtos.isEmpty())
-//          texto += " vazia";
-//      else   
-//          for(Produto p: produtos) 
-//              texto += " " + p.getDescricao() ;
-//
-//      return texto;
-//  }
+    public int getId() {
 
+    	return id;
+	  
     }
+
     public void setId(int id) {
         this.id = id;
     }
      
  
-   // @Override
-//    public String toString() {
-//        String texto = "Pedido [id=" + id  ;
-//        texto += ", produtos:";
-//        if (produtos.isEmpty())
-//            texto += " vazia";
-//        else   
-//            for(Produto p: produtos) 
-//                texto += " " + p.getNome() ;
-// 
-//        return texto + "]";
-//    }
+    @Override
+    public String toString() {
+        String texto = "Pedido [id=" + id  ;
+        texto += ", produtos:";
+        if (produtos.isEmpty())
+            texto += " vazia";
+        else   
+            for(Produto p: produtos) 
+                texto += " " + p.getDescricao() ;
+ 
+        return texto + "]";
+    }
 // 
  
 }

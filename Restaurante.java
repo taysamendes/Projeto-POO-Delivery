@@ -57,7 +57,7 @@ public class Restaurante {
 		return produtos;
 	}
 
-	public ArrayList<Pedido> getPrateleiras() {
+	public ArrayList<Pedido> getPedidos() {
 		return pedidos;
 	}
 	
@@ -68,14 +68,14 @@ public class Restaurante {
 	public int getTotalProdutos(){
 		return produtos.size();
 	}
-	public int getTotalPrateleiras(){
+	public int getTotalPedidos(){
 		return pedidos.size();
 	}
 	
 /*################################################## MINHAS FUNÇÕES	########################################################################################################*/
-	public Cliente localizarCliente(String nome_cliente){
+	public Cliente localizarCliente(String nome){
 		 for(Cliente c: clientes){
-			 if(c.getNome().equals(nome_cliente))
+			 if(c.getNome().equals(nome))
 			 return c;
 		 }
 		 return null;
