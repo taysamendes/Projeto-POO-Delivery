@@ -1,4 +1,4 @@
-package repositorio;
+//package repositorio;
 /**********************************
  * IFPB - Curso Superior de Tec. em Sist. para Internet
  * Programação Orientada a Objetos
@@ -7,9 +7,6 @@ package repositorio;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import modelo.Cliente;
-import modelo.Pedido;
-import modelo.Produto;
 
 public class Restaurante {
 	private ArrayList<Produto> produtos = new ArrayList<Produto>();
@@ -73,9 +70,9 @@ public class Restaurante {
 	}
 	
 /*################################################## MINHAS FUNÇÕES	########################################################################################################*/
-	public Cliente localizarCliente(String nome){
+	public Cliente localizarCliente(String telefone){
 		 for(Cliente c: clientes){
-			 if(c.getNome().equals(nome))
+			 if(c.getTelefone().equals(telefone))
 			 return c;
 		 }
 		 return null;

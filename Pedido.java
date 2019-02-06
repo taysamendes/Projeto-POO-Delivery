@@ -1,4 +1,4 @@
-package modelo;
+//package modelo;
 import java.time.LocalDateTime;
 /**********************************
  * IFPB - Curso Superior de Tec. em Sist. para Internet
@@ -8,13 +8,14 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import fachada.Fachada;
-import repositorio.Restaurante;
- 
- 
+
 public class Pedido {
     private int id=0;
     private LocalDateTime data = LocalDateTime.now();
+    private double total = 0;
+    private String entregador;
+    private boolean fechado;
+    private Cliente cliente;
 
      
     private ArrayList<Produto>produtos = new ArrayList<Produto>();
@@ -24,6 +25,7 @@ public class Pedido {
         super();
         this.id = id;
     }
+    
     public void adicionar(Produto p){
         produtos.add(p);
     }

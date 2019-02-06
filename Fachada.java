@@ -1,11 +1,11 @@
-package fachada;
+//package fachada;
  
 import java.util.ArrayList;
 
-import modelo.Cliente;
-import modelo.Pedido;
-import modelo.Produto;
-import repositorio.Restaurante;
+//import modelo.Cliente;
+//import modelo.Pedido;
+//import modelo.Produto;
+//import repositorio.Restaurante;
  
 /**********************************
  * IFPB - Curso Superior de Tec. em Sist. para Internet
@@ -17,18 +17,24 @@ import repositorio.Restaurante;
 public class Fachada {
     private static Restaurante restaurante = new Restaurante();
     private ArrayList<Produto> produtos = new ArrayList<Produto>();
+    private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 
+    
+    
+    private static int idproduto=0;
     private static int idpedido=0;  //autoincremento
     
  
  
     public static Produto cadastrarProduto(String nome, double preco) throws  Exception{
+    	idproduto++;
         Produto p = restaurante.localizarProduto(nome);
+        
         if (p!=null)
             throw new Exception("cadastrar produto: produto ja cadastrado:" + nome);
          
         //criar produto e adicionar na restaurante
-        p = new Produto(nome,preco);
+        p = new Produto(idproduto,nome,preco);
         restaurante.adicionar(p);
         return p;
     }
@@ -92,15 +98,25 @@ public class Fachada {
     	return restaurante.getClientes();
     }
  
-    /*################################################## MINHAS FUNÇÕES	########################################################################################################*/
+    /*################################################## MINHAS FUNCOES	########################################################################################################*/
     public static Cliente cadastrarCliente(String telefone, String nome, String email, String endereco)throws Exception {
     	Cliente c  = restaurante.localizarCliente(nome);
     	if(c!=null)
-            throw new Exception("O cliente já cadastrado:" + nome);
+            throw new Exception("O cliente ja cadastrado:" + nome);
     	c = new Cliente(telefone,nome,email,endereco);
     	restaurante.adicionar(c);
     	return c;
     }
+    
+    public static ArrayList<Pedido> listarPedidos(String telefone){
+    	ArrayList<Pedido> aux = new ArrayList<>();
+    	Cliente cli = restaurante.localizarCliente(telefone);
+    	
+    	aux  = cli.getPedidos();
+    	return aux;     	
+    }
+    
+    
 
     /*##########################################################################################################################################################################*/
      

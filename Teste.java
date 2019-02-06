@@ -1,11 +1,7 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import fachada.Fachada;
-import modelo.Cliente;
-import modelo.Pedido;
-import modelo.Produto;
-import repositorio.Restaurante;
+
  
 public class Teste {
      
@@ -22,14 +18,15 @@ public class Teste {
                     "Rua dos Tronos");
             System.out.println("cadastrou cliente="+joao.getNome());
             Cliente maria = Fachada.cadastrarCliente("98820-0222", "maria", "maria@gmail.com",
-                    "Rua da Justiça, 12");          
+                    "Rua da JustiÃ§a, 12");          
             System.out.println("cadastrou cliente="+maria.getNome());
-            Cliente amanda = Fachada.cadastrarCliente("998413306", "Amanda", "amanda@gmail.com", "Rua da Água,176");
+            Cliente amanda = Fachada.cadastrarCliente("998413306", "Amanda", "amanda@gmail.com", "Rua da agua,176");
             System.out.println("Cadastrou cliente= "+amanda.getNome());
             Produto pizza = Fachada.cadastrarProduto("Pizza", 30);
             System.out.println("cadastrou produto="+pizza.getDescricao());
             Produto sushi = Fachada.cadastrarProduto("Sushi", 40);
-            
+
+
             Produto Salada = Fachada.cadastrarProduto("Salada", 40);
             Produto Suco = Fachada.cadastrarProduto("Suco", 40);
             Produto Salame = Fachada.cadastrarProduto("Salame", 40);
@@ -46,6 +43,9 @@ public class Teste {
             System.out.println("abrir pedido ="+pedido1.getId());
             Pedido pedido2 = Fachada.abrirPedido("98820-0222");
             System.out.println("abrir pedido ="+pedido2.getId());
+            
+            System.out.println("TESTAR FUNCAO");
+            System.out.println(Fachada.listarPedidos("98745-0643"));
 //             
 //            System.out.println("\nconsultar pedido ="+ Fachada.consultarPedido("98745-0643"));
 //            System.out.println("\nconsultar pedido ="+ Fachada.consultarPedido("98820-0222"));
@@ -142,7 +142,7 @@ public class Teste {
 //        }catch (Exception e) {System.out.println("1--->"+e.getMessage());}
 //        try {
 //            Cliente c = Fachada.cadastrarCliente("98820-0222", "maria", "maria@gmail.com",
-//                    "Rua da Justiça, 12");          
+//                    "Rua da JustiÃ§a, 12");          
 //            System.out.println("*************FALHA2: cliente ja cadastrado"); 
 //        }catch (Exception e) {System.out.println("2--->"+e.getMessage());}
 //        try {

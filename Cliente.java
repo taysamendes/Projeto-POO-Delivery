@@ -1,4 +1,4 @@
-package modelo;
+//package modelo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,6 +9,9 @@ public class Cliente {
 	private String email;
 	private String endereco;
 	
+	
+
+
 	private ArrayList<Pedido> pedidos = new ArrayList<Pedido>();
 	
 	
@@ -47,6 +50,14 @@ public class Cliente {
 
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+	
+	public ArrayList<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(ArrayList<Pedido> pedidos) {
+		this.pedidos = pedidos;
 	}
 
 
