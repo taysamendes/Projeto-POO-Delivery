@@ -26,40 +26,49 @@ public class Fachada {
     
  
  
-    public static Produto cadastrarProduto(String nome, double preco) throws  Exception{
+    public static Produto cadastrarProduto(String descricao, double preco) throws  Exception{
     	idproduto++;
-        Produto p = restaurante.localizarProduto(nome);
+        Produto p = restaurante.localizarProduto(descricao);
         
         if (p!=null)
-            throw new Exception("cadastrar produto: produto ja cadastrado:" + nome);
+            throw new Exception("cadastrar produto: produto ja cadastrado:" + descricao);
          
         //criar produto e adicionar na restaurante
-        p = new Produto(idproduto,nome,preco);
+        p = new Produto(idproduto,descricao,preco);
         restaurante.adicionar(p);
         return p;
     }
  
-    public static Pedido abrirPedido(String telefone){
+    public static Pedido abrirPedido(String telefone)throws Exception{
         idpedido++;
-        Pedido p = new Pedido(idpedido);    
+
+        Cliente c = restaurante.localizarCliente(telefone);
+        if(c==null)
+        	throw new Exception("Cliente nao cadastrado.");
+        
+        if(c.obterPedidoAberto()!=null)
+        	throw new Exception("Cliente com pedido aberto.\n");
+        
+        Pedido p = new Pedido(idpedido);
+        c.addPedido(p);
         restaurante.adicionar(p);
+        p.setFechado(false);
         return p;
     }
  
-    public static void adicionarProdutoPedido(String nome_cliente, String nome_produto) throws Exception {   
-    	String telefone;
-        Cliente cli = restaurante.localizarCliente(nome_cliente);
+    public static void adicionarProdutoPedido(String telefone, String descricao) throws Exception {   
+
+    	Cliente cli = restaurante.localizarCliente(telefone);
         if(cli == null) 
-            throw new Exception("inclusao na pedido - cliente nao cadastrado:" + nome_cliente);
-        
-        telefone = cli.getTelefone();
-        Pedido pedido = cli.obterPedidoAberto(telefone);
+            throw new Exception("inclusao na pedido - cliente nao cadastrado");
+
+        Pedido pedido = cli.obterPedidoAberto();
         if(pedido == null) 
             throw new Exception("inclusao na pedido - nao existe pedido aberto do cliente:");
  
-        Produto produto = restaurante.localizarProduto(nome_produto);
+        Produto produto = restaurante.localizarProduto(descricao);
         if(produto == null)
-            throw new Exception("inclusao na pedido - produto nao cadastrado:" + produto.getDescricao());
+            throw new Exception("inclusao na pedido - produto nao cadastrado.");
  
          
         pedido.adicionar(produto);  //relacionar produto e prateleira
@@ -109,13 +118,32 @@ public class Fachada {
     }
     
     public static ArrayList<Pedido> listarPedidos(String telefone){
-    	ArrayList<Pedido> aux = new ArrayList<>();
     	Cliente cli = restaurante.localizarCliente(telefone);
-    	
-    	aux  = cli.getPedidos();
-    	return aux;     	
+    	return cli.getPedidos();     	
     }
     
+    public static  Pedido consultarPedido(String telefone) throws Exception{
+    	Cliente cli = restaurante.localizarCliente(telefone);
+    	if(cli==null)
+    		throw new Exception("Cliente nao cadastrado.");
+    	
+    	if(cli.obterPedidoAberto()==null)
+    		throw new Exception("Pedido fechado do cliente: "+ telefone);
+    	
+    	return cli.obterPedidoAberto();  	
+    }
+    
+    public static void fecharPedido(String telefone, String entregador) throws Exception{
+    	Cliente cli = restaurante.localizarCliente(telefone);
+    	Pedido p = cli.obterPedidoAberto();
+    	
+    	if(cli==null)
+    		throw new Exception("Cliente nao cadastrado.");
+    	if(p == null) {
+    		throw new Exception("O pedido já foi fechado.");
+    	}    	
+    		p.setFechado(true);  	
+    }
     
 
     /*##########################################################################################################################################################################*/

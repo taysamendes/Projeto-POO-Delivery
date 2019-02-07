@@ -24,6 +24,7 @@ public class Pedido {
     public Pedido(int id) {
         super();
         this.id = id;
+//        fechado= false;
     }
     
     public void adicionar(Produto p){
@@ -54,10 +55,18 @@ public class Pedido {
 
     public void setId(int id) {
         this.id = id;
-    }
-     
+    }     
  
-    @Override
+    public boolean isFechado() {
+		return fechado;
+	}
+    
+    
+	public void setFechado(boolean fechado) {
+		this.fechado = fechado;
+	}
+
+	@Override
     public String toString() {
         String texto = "Pedido [id=" + id  ;
         texto += ", produtos:";

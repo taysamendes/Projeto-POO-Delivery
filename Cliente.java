@@ -60,6 +60,9 @@ public class Cliente {
 		this.pedidos = pedidos;
 	}
 
+	public void addPedido(Pedido p) {
+		pedidos.add(p);
+	}
 
 	@Override
 	public String toString() {
@@ -69,10 +72,15 @@ public class Cliente {
 	
 	
 	 /*################################################## MINHAS FUNÇÕES	########################################################################################################*/
-//	public Pedido obterPedidoAberto(String telefone) {
-//		Cliente cli;
-//		
-//	}
+	public Pedido obterPedidoAberto() {
+		if(pedidos.isEmpty())
+			return null;
+		Pedido pedido = pedidos.get(pedidos.size()-1);
+		if (pedido.isFechado())
+			return null;
+		return pedido;
+		
+	}
 
     /*##########################################################################################################################################################################*/
      
