@@ -1,5 +1,3 @@
-//package modelo;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -62,6 +60,10 @@ public class Cliente {
 
 	public void addPedido(Pedido p) {
 		pedidos.add(p);
+	}
+	
+	public void removerPedido(Pedido p) {
+		pedidos.remove(p);
 	}
 
 	@Override

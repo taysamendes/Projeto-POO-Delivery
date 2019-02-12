@@ -14,18 +14,18 @@ public class Teste {
 	public static void parte1 () {      
 
 		try {
-			System.out.println("\n\t\t\t-------- CLIENTES CADASTRADOS --------");
+			System.out.println("\n-------- CLIENTES CADASTRADOS --------");
 			Cliente joao = Fachada.cadastrarCliente("98745-0643", "Joao", "joao@gmail.com",
 					"Rua dos Tronos");
-			System.out.println("\t\t\t\t\t"+joao.getNome());
+			System.out.println(joao.getNome());
 			Cliente maria = Fachada.cadastrarCliente("98820-0222", "Maria", "maria@gmail.com",
-					"Rua da Justi�a, 12");          
-			System.out.println("\t\t\t\t\t"+maria.getNome());
+					"Rua da Justiça, 12");          
+			System.out.println(maria.getNome());
 			Cliente amanda = Fachada.cadastrarCliente("998413306", "Amanda", "amanda@gmail.com", "Rua da agua,176");
-			System.out.println("\t\t\t\t\t"+amanda.getNome());
+			System.out.println(amanda.getNome());
 			Cliente mayara = Fachada.cadastrarCliente("99841-1212", "Mayara", "mayara@gmail.com", "Rua das gaivotas,71");
-			
-			System.out.println("\n\t\t\t-------- PRODUTOS CADASTRADOS --------");
+
+			System.out.println("\n-------- PRODUTOS CADASTRADOS --------");
 			Produto pizza = Fachada.cadastrarProduto("Pizza", 30);
 			Produto sushi = Fachada.cadastrarProduto("Sushi", 40);
 			Produto Salada = Fachada.cadastrarProduto("Salada", 40);
@@ -34,75 +34,71 @@ public class Teste {
 			Produto cocaCola = Fachada.cadastrarProduto("Coca-cola", 10);
 			Produto guarana = Fachada.cadastrarProduto("Guarana", 5);  
 
-			System.out.println("\t\t\t\t\t"+pizza.getDescricao());
-			System.out.println("\t\t\t\t\t"+sushi.getDescricao());
-			System.out.println("\t\t\t\t\t"+cocaCola.getDescricao());
-			System.out.println("\t\t\t\t\t"+guarana.getDescricao());     
+			System.out.println(pizza.getDescricao());
+			System.out.println(sushi.getDescricao());
+			System.out.println(cocaCola.getDescricao());
+			System.out.println(guarana.getDescricao());     
 
-			System.out.println("\nAbrir pedidos");          
+			System.out.println("\n-------- ABRINDO PEDIDOS --------");          
 			Pedido pedido1 = Fachada.abrirPedido("98745-0643");
-			System.out.println("abrir pedido ="+pedido1.getId());
+			System.out.println("abrir pedido = "+pedido1.getId());
 			Pedido pedido2 = Fachada.abrirPedido("98820-0222");
-			System.out.println("abrir pedido ="+pedido2.getId());
-			
-			
+			System.out.println("abrir pedido = "+pedido2.getId());
 
-
-			System.out.println("\n adicao dos produtos ao Pedido");         
+			// -------- ADICAO DOS PRODUTOS AO PEDIDO --------        
 			Fachada.adicionarProdutoPedido("98745-0643", "Sushi");
 			Fachada.adicionarProdutoPedido("98745-0643", "Sushi");
-
 			Fachada.adicionarProdutoPedido("98820-0222", "Guarana");   
-			
 
-			System.out.println("TESTAR FUNCAO");
+			System.out.println("\n-------- LISTANDO PEDIDOS --------");          
 			System.out.println(Fachada.listarPedidos("98745-0643"));
 			System.out.println(Fachada.listarPedidos("98820-0222"));
-			System.out.println(Fachada.listarPedidos("98820-0222"));
 
+			System.out.println("\n-------- CONSULTANDO PEDIDOS --------");          
+			System.out.println(Fachada.consultarPedido("98745-0643"));
+			System.out.println(Fachada.consultarPedido("98820-0222"));
+
+			// -------- ADICAO DE MAIS PRODUTOS NO PEDIDO --------        
+			Fachada.adicionarProdutoPedido("98745-0643", "Pizza");
+			Fachada.adicionarProdutoPedido("98820-0222", "Coca-cola"); 
+
+			System.out.println("\n-------- CONSULTANDO PEDIDOS APOS ADICAO--------");  
+			System.out.println(Fachada.consultarPedido("98745-0643"));
+			System.out.println(Fachada.consultarPedido("98820-0222"));
+
+			//-------- REMOCAO DE PRODUTO NO PEDIDO --------     
+			Fachada.removerProdutoPedido("98820-0222","Coca-cola");
+			Fachada.removerProdutoPedido("98745-0643","Sushi");	
+
+			System.out.println("\n-------- CONSULTANDO PEDIDOS APOS REMOCAO--------");          
+			System.out.println(Fachada.consultarPedido("98745-0643"));
+			System.out.println(Fachada.consultarPedido("98820-0222"));
 			
 
+			System.out.println("\n-------- ABRINDO NOVO PEDIDO -------- ");
+			Pedido pedido3 = Fachada.abrirPedido("99841-1212");
+			System.out.println("Abrir pedido No: ="+pedido3.getId());
+			Fachada.adicionarProdutoPedido("99841-1212", "Sushi");
+			Fachada.adicionarProdutoPedido("99841-1212", "Coca-cola");
+			System.out.println("consultar pedido ="+ Fachada.consultarPedido("99841-1212"));		
 
 
-			System.out.println("\nconsultar pedido ="+ Fachada.consultarPedido("98745-0643"));
-			System.out.println("\nconsultar pedido ="+ Fachada.consultarPedido("98820-0222"));
-			//             
-
-			Fachada.adicionarProdutoPedido("98745-0643", "Pizza");
-
-			Fachada.adicionarProdutoPedido("98820-0222", "Coca-cola");    
-
-
-
+			//-------- CANCELAMENTO DE PEDIDO --------     
+			
+			System.out.println("\n-------- CANCELANDO PEDIDO --------");
+			Fachada.cancelarPedido("99841-1212");
+			System.out.println("consultar pedido ="+ Fachada.consultarPedido("99841-1212"));
+			
+			System.out.println("\n-------- FECHANDO PEDIDOS --------");              
+			Fachada.fecharPedido("98745-0643", "João de Deus");
 			System.out.println("consultar pedido ="+ Fachada.consultarPedido("98745-0643"));
-			System.out.println("consultar pedido ="+ Fachada.consultarPedido("98820-0222"));
-			     
 
-			 //          Fachada.fecharPedido("98820-0222", "entregadorX");
-			//            //Fachada.enviarPedido("98745-0643", "senha");
-			//            //Fachada.enviarPedido("98820-0222", "senha");
-			// 			            
-            System.out.println("\n Fechando pedidos");              
-            Fachada.fecharPedido("98745-0643", "Jo�o de Deus");
 
-            
-			            System.out.println("ABRINDO NOVO PEDIDO:");
-			            Pedido pedido3 = Fachada.abrirPedido("99841-1212");
-			            System.out.println("Abrir pedido No: ="+pedido3.getId());
-						Fachada.adicionarProdutoPedido("99841-1212", "Sushi");
-						Fachada.adicionarProdutoPedido("99841-1212", "Coca-cola");
-						System.out.println("consultar pedido ="+ Fachada.consultarPedido("99841-1212"));
-						
-			            System.out.println("consultar pedido ="+ Fachada.consultarPedido("98745-0643"));
+			//			            Fachada.enviarPedido("98745-0643", "senha");
+			//			            Fachada.enviarPedido("98820-0222", "senha");
 
 
 
-
-			// 
-			//            System.out.println("\nCancelar pedido:");
-			//            Fachada.cancelarPedido("98745-0643");
-			//            System.out.println("consultar pedido ="+ Fachada.consultarPedido("98745-0643"));
-			//         
 			//             
 			//            System.out.println("\nArrecadacao diaria");
 			//            Fachada.calcularArrecadacao(LocalDate.now().getDayOfMonth());
@@ -166,7 +162,7 @@ public class Teste {
 	//        }catch (Exception e) {System.out.println("1--->"+e.getMessage());}
 	//        try {
 	//            Cliente c = Fachada.cadastrarCliente("98820-0222", "maria", "maria@gmail.com",
-	//                    "Rua da JustiÃ§a, 12");          
+	//                    "Rua da JustiÃƒÂ§a, 12");          
 	//            System.out.println("*************FALHA2: cliente ja cadastrado"); 
 	//        }catch (Exception e) {System.out.println("2--->"+e.getMessage());}
 	//        try {

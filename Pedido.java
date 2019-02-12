@@ -1,4 +1,3 @@
-//package modelo;
 import java.time.LocalDateTime;
 /**********************************
  * IFPB - Curso Superior de Tec. em Sist. para Internet
@@ -41,7 +40,8 @@ public class Pedido {
 //        }
 //        return null;
 //    }
-     
+    
+
  
     public int getTotalProdutos(){
         return produtos.size();
